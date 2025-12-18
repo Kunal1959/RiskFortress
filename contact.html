@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Our Strategy Office | Mayalok Corporation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Contact Page Specific Styles */
+
+        /* Contact Hero Section */
+        .contact-hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .contact-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+            background-image: url('assets/hero-contact.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contact-hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .contact-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .contact-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 3rem;
+            background: var(--light-navy);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-form-container {
+            flex: 2;
+            padding: 3rem;
+            background: var(--light-navy);
+        }
+
+        .contact-sidebar {
+            flex: 1;
+            padding: 3rem;
+            background: rgba(10, 17, 29, 0.7);
+            border-left: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .form-subtitle {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: var(--light-navy);
+        }
+
+        .form-input::placeholder {
+            color: var(--gray);
+        }
+
+        .contact-cta {
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .contact-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Sidebar Elements */
+        .secure-option {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .secure-option:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .secure-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .secure-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .secure-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .confidential-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(10, 17, 29, 0.8);
+            border: 1px solid var(--gold);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .badge-icon {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .badge-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .legal-disclaimer {
+            background: rgba(10, 17, 29, 0.5);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .disclaimer-text {
+            color: var(--gray);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        /* Response Time Badge */
+        .response-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .response-icon {
+            color: var(--green);
+        }
+
+        .response-text {
+            color: var(--green);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .contact-sidebar {
+                border-left: none;
+                border-top: 1px solid rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-hero p {
+                font-size: 1.1rem;
+            }
+
+            .contact-form-container,
+            .contact-sidebar {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header></header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-bg"></div>
+        <div class="contact-hero-content">
+            <h1>Speak with our Strategy Office</h1>
+            <p>Secure consultation for high-value asset protection</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <div class="response-badge">
+                    <i class="fas fa-clock response-icon"></i>
+                    <span class="response-text">We respond within 12 hours</span>
+                </div>
+
+                <h2 class="form-title">Request Private Briefing</h2>
+                <p class="form-subtitle">NDA available upon request. All communications are confidential.</p>
+
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="full-name" class="form-label">Full Name</label>
+                        <input type="text" id="full-name" name="name" class="form-input"
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company" class="form-label">Company Name</label>
+                        <input type="text" id="company" name="company" class="form-input"
+                            placeholder="Enter your company name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="asset-location" class="form-label">Asset Address / Location</label>
+                        <input type="text" id="asset-location" name="location" class="form-input"
+                            placeholder="City, region or specific address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="risk-concern" class="form-label">Primary Risk Concern</label>
+                        <select id="risk-concern" name="concern" class="form-select" required>
+                            <option value="" disabled selected>Select your primary concern</option>
+                            <option value="zoning">Zoning & Land Use Regulations</option>
+                            <option value="environmental">Environmental Compliance</option>
+                            <option value="infrastructure">Infrastructure Development Impact</option>
+                            <option value="acquisition">Land Acquisition Due Diligence</option>
+                            <option value="compliance">Regulatory Compliance Strategy</option>
+                            <option value="other">Other Risk Concern</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input"
+                            placeholder="Enter your business email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Secure Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input"
+                            placeholder="Enter your contact number">
+                    </div>
+
+                    <button type="submit" class="contact-cta">
+                        <i class="fas fa-lock"></i>
+                        Request Private Briefing
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Sidebar -->
+            <div class="contact-sidebar">
+                <div>
+                    <div class="secure-option">
+                        <div class="secure-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="secure-title">Secure WhatsApp</h3>
+                        <p class="secure-desc">For urgent matters, connect directly with our strategy team via encrypted
+                            WhatsApp.</p>
+                    </div>
+
+                    <div class="confidential-badge">
+                        <i class="fas fa-shield-alt badge-icon"></i>
+                        <span class="badge-text">STRICTLY CONFIDENTIAL</span>
+                    </div>
+                </div>
+
+                <div class="legal-disclaimer">
+                    <p class="disclaimer-text">All insights based on publicly available regulatory and spatial data.
+                        Client information protected under strict NDA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const contactForm = document.getElementById('contact-form');
+
+            // Form submission handler
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const submitBtn = contactForm.querySelector('.contact-cta');
+                const originalText = submitBtn.innerHTML;
+
+                // Loading state
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Securing Submission...';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(contactForm);
+
+                // ---------------------------------------------------------
+                // IMPORTANT: REPLACE THIS URL WITH YOUR OWN FORMSPREE ENDPOINT
+                // 1. Go to https://formspree.io/
+                // 2. Create a new form
+                // 3. Copy the "Form Endpoint" URL
+                // 4. Paste it below
+                // ---------------------------------------------------------
+                const FORMSPREE_ENDPOINT = 'https://formspree.io/f/movoevqd';
+
+                fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Success logic
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Submission Secured';
+                        submitBtn.style.background = 'var(--green)';
+
+                        // Get name for personalization
+                        const name = document.getElementById('full-name').value;
+                        alert(`Thank you ${name}. Your private briefing request has been securely submitted. Our Strategy Office will contact you within 12 hours.`);
+
+                        contactForm.reset();
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.style.background = 'var(--gold)';
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    } else {
+                        // Error logic
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert("Oops! There was a problem submitting your form");
+                            }
+                        });
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
+                }).catch(error => {
+                    // Network error
+                    alert("Oops! There was a problem submitting your form");
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+
+            // WhatsApp CTA interaction
+            const whatsappOption = document.querySelector('.secure-option');
+            whatsappOption.addEventListener('click', () => {
+                // In a real implementation, this would open WhatsApp with a pre-filled message
+                alert("Secure WhatsApp: +1 (555) 123-4567\nOur team is available for encrypted communication.");
+            });
+        });
+    </script>
+</body>
+
+</html>

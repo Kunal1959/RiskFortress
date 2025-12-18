@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision-Grade Intelligence | Mayalok Corporation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Case Study Page Specific Styles */
+
+        /* Hero Section */
+        .case-hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .case-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+            background-image: url('assets/hero-cases.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .case-hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .case-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .case-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-card {
+            height: 450px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .case-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .case-card:hover .case-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .case-front,
+        .case-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .case-front {
+            background: var(--light-navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .case-back {
+            background: var(--light-navy);
+            transform: rotateY(180deg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .case-map {
+            height: 60%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-blur {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .map-blur::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(227, 49, 49, 0.3) 0%, transparent 50%);
+            filter: blur(10px);
+        }
+
+        .case-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(10, 17, 29, 0.8);
+            color: var(--gold);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .case-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .case-type {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .view-insight {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .view-insight:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .case-back .case-title {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-details {
+            margin-bottom: 2rem;
+        }
+
+        .case-details p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .case-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        /* Confidential Section */
+        .confidential-section {
+            padding: 6rem 5%;
+            background: var(--light-navy);
+            text-align: center;
+        }
+
+        .confidential-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .confidential-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .confidential-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .confidential-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(10, 17, 29, 0.5);
+            border: 1px solid var(--gold);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+        }
+
+        .confidential-badge i {
+            color: var(--gold);
+        }
+
+        /* CTA Section */
+        .case-cta {
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .blueprint-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image:
+                linear-gradient(rgba(30, 58, 138, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 58, 138, 0.5) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .cases-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .case-hero p {
+                font-size: 1.1rem;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .case-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header></header>
+
+    <!-- Hero Section -->
+    <section class="case-hero">
+        <div class="case-hero-bg"></div>
+        <div class="case-hero-content">
+            <h1>Decision-Grade Intelligence</h1>
+            <p>Real-world examples of how our intelligence system protects high-value assets from regulatory risks</p>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="section-title">
+            <h2>Protected Assets, Preserved Value</h2>
+            <p>Confidential case studies demonstrating our impact on client portfolios</p>
+        </div>
+
+        <div class="cases-grid">
+            <!-- Case 1: Industrial Plant -->
+            <div class="case-card">
+                <div class="case-card-inner">
+                    <div class="case-front">
+                        <div class="case-map">
+                            <div class="map-blur" style="background-image: url('assets/case-1.png');"></div>
+                            <div class="case-tag">CONFIDENTIAL</div>
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">Industrial Plant</h3>
+                            <p class="case-type">Manufacturing Facility</p>
+                            <button class="view-insight">View High-Level Insight</button>
+                        </div>
+                    </div>
+                    <div class="case-back">
+                        <h3 class="case-title">Industrial Plant Protection</h3>
+                        <div class="case-details">
+                            <p>Identified forthcoming environmental compliance changes that would have required complete
+                                operational shutdown.</p>
+                            <p>Implemented phased compliance strategy allowing continued operations while meeting new
+                                standards.</p>
+                        </div>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <div class="stat-value">₹12 Cr</div>
+                                <div class="stat-label">Asset Value Protected</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Days Shutdown</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 2: Commercial Complex -->
+            <div class="case-card">
+                <div class="case-card-inner">
+                    <div class="case-front">
+                        <div class="case-map">
+                            <div class="map-blur" style="background-image: url('assets/case-2.png');"></div>
+                            <div class="case-tag">CONFIDENTIAL</div>
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">Commercial Complex</h3>
+                            <p class="case-type">Mixed-Use Development</p>
+                            <button class="view-insight">View High-Level Insight</button>
+                        </div>
+                    </div>
+                    <div class="case-back">
+                        <h3 class="case-title">Green Zone Compliance</h3>
+                        <div class="case-details">
+                            <p>Strategic positioning within upcoming green zones ensured maximum compliance with future
+                                environmental regulations.</p>
+                            <p>Optimized development plan to align with municipal infrastructure projects, enhancing
+                                long-term value.</p>
+                        </div>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <div class="stat-value">100%</div>
+                                <div class="stat-label">Compliance Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">+22%</div>
+                                <div class="stat-label">Exit Value Preserved</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3: Luxury Land Acquisition -->
+            <div class="case-card">
+                <div class="case-card-inner">
+                    <div class="case-front">
+                        <div class="case-map">
+                            <div class="map-blur" style="background-image: url('assets/case-3.png');"></div>
+                            <div class="case-tag">CONFIDENTIAL</div>
+                        </div>
+                        <div class="case-content">
+                            <h3 class="case-title">Luxury Land Acquisition</h3>
+                            <p class="case-type">Residential Development</p>
+                            <button class="view-insight">View High-Level Insight</button>
+                        </div>
+                    </div>
+                    <div class="case-back">
+                        <h3 class="case-title">Pre-Purchase Risk Detection</h3>
+                        <div class="case-details">
+                            <p>Identified hidden zoning restrictions prior to acquisition that would have limited
+                                development potential by 60%.</p>
+                            <p>Provided alternative site recommendations with higher development potential and lower
+                                regulatory risk.</p>
+                        </div>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <div class="stat-value">3 Months</div>
+                                <div class="stat-label">Faster Due Diligence</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">₹8 Cr</div>
+                                <div class="stat-label">Risk Avoided</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidential Section -->
+    <section class="confidential-section">
+        <div class="confidential-content">
+            <h2>Client Confidentiality</h2>
+            <p>All case studies are presented with strict adherence to client confidentiality agreements. Specific
+                locations, client identities, and exact financial figures have been modified to protect privacy while
+                demonstrating the tangible value of our intelligence system.</p>
+
+            <div class="confidential-badge">
+                <i class="fas fa-lock"></i>
+                <span>STRICTLY CONFIDENTIAL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="case-cta">
+        <div class="blueprint-overlay"></div>
+        <div class="cta-content">
+            <h2>Protect Your Assets with Precision Intelligence</h2>
+            <p>Our confidential intelligence system has protected over ₹500 Crore in client assets. Let us safeguard
+                your investments from regulatory risks.</p>
+            <button class="cta-btn" onclick="window.location.href='contact.html'">
+                <i class="fas fa-shield-alt"></i>
+                Request Confidential Consultation
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer></footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Enhanced card flip functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const caseCards = document.querySelectorAll('.case-card');
+
+            // Add click functionality for mobile
+            caseCards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    // Don't flip if the click was on the button
+                    if (!e.target.classList.contains('view-insight')) {
+                        this.querySelector('.case-card-inner').classList.toggle('flipped');
+                    }
+                });
+            });
+
+            // Add hover effect for desktop
+            if (window.innerWidth > 768) {
+                caseCards.forEach(card => {
+                    const frontButton = card.querySelector('.view-insight');
+
+                    frontButton.addEventListener('mouseenter', function () {
+                        this.style.background = 'var(--gold)';
+                        this.style.color = 'var(--navy)';
+                    });
+
+                    frontButton.addEventListener('mouseleave', function () {
+                        this.style.background = 'transparent';
+                        this.style.color = 'var(--gold)';
+                    });
+                });
+            }
+
+            // Animation on scroll for case studies
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            caseCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

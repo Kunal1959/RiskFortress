@@ -74,7 +74,7 @@ const footerHTML = `
     </div>
     <div class="footer-bottom">
         <p>All insights based on publicly available regulatory and spatial data.</p>
-        <p>© 2024 RiskFortress — A Platform of <strong>Mayalok Ventures</strong>. All rights reserved.</p>
+        <p>© 2024 RiskFortress — A Platform of <a="https://spring-poetry-d840.mayalokventures.workers.dev/contact"><strong>Mayalok Ventures</strong></a>. All rights reserved.</p>
     </div>
 `;
 

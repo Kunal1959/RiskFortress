@@ -1,8 +1,8 @@
 // Common Header & Footer Components
 const headerHTML = `
     <div class="logo">
-        <div class="logo-icon">MC</div>
-        <div class="logo-text">Mayalok Corporation</div>
+        <div class="logo-icon">RF</div>
+        <div class="logo-text">RiskFortress</div>
     </div>
     <nav>
         <ul>
@@ -24,10 +24,24 @@ const footerHTML = `
     <div class="footer-content">
         <div class="footer-logo">
             <div class="logo">
-                <div class="logo-icon">MC</div>
-                <div class="logo-text">Mayalok Corporation</div>
+                <div class="logo-icon">RF</div>
+                <div class="logo-text">RiskFortress</div>
             </div>
             <p>Intelligence Protects Wealth. See the Risk Before It Strikes.</p>
+            <div class="footer-contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:support@riskfortress.com">support@riskfortress.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+911234567890">+91 123 456 7890</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Sector 62, Noida, Uttar Pradesh, India</span>
+                </div>
+            </div>
         </div>
         <div class="footer-links">
             <div class="footer-links-column">
@@ -47,11 +61,20 @@ const footerHTML = `
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+            <div class="footer-links-column">
+                <h3>Ventures</h3>
+                <ul>
+                    <li><a href="#">Mayajob</a></li>
+                    <li><a href="#">GuruMaya</a></li>
+                    <li><a href="#">Deeplink Creators</a></li>
+                    <li><a href="#">Mayavi_studio</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>All insights based on publicly available regulatory and spatial data. © 2023 Mayalok Corporation. All
-            rights reserved.</p>
+        <p>All insights based on publicly available regulatory and spatial data.</p>
+        <p>© 2024 RiskFortress — A Platform of <strong>Mayalok Ventures</strong>. All rights reserved.</p>
     </div>
 `;
 
